@@ -2,6 +2,11 @@ import { styled, css } from "styled-components";
 import { Navbar } from "./components/Navbar";
 import Intro from "./components/Intro";
 import { Feature } from "./components/Feature";
+import  Service  from "./components/Service";
+import  Price  from "./components/Price";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { SearchBar } from "./components/SearchBar";
 
 const Container = styled.div`
   height: 100vh;
@@ -30,9 +35,22 @@ const FeatureShape = styled.div`
   background-color: pink;
 `;
 
+const ServiceShape = styled.div`
+  ${Shape}
+  clip-path: polygon(0 0, 33% 0%, 33% 100%, 0 100%);
+  background-color: #FFECAF;
+`;
+const PriceShape = styled.div`
+  ${Shape}
+  clip-path: polygon(33% 0, 100% 0%, 100% 100%, 67% 100%);
+  background-color: crimson;
+`;
+
 function App() {
+  const smallScreen = window.screen.width <= 480 ? true : false;
   return (
     <>
+    
       <Container>
         <Navbar></Navbar>
         <Intro></Intro>
@@ -41,6 +59,19 @@ function App() {
       <Container>
         <Feature />
         <FeatureShape />
+      </Container>
+      <Container>
+        <Service>
+        </Service>
+        {!smallScreen && <ServiceShape />}
+      </Container>
+      <Container>
+        <Price />
+        <PriceShape />
+      </Container>
+      <Container>
+        <Contact />
+        <Footer />
       </Container>
     </>
   );
